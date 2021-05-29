@@ -50,16 +50,17 @@ const ExpenseForm = (props) => {
         
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
-            date: new Date(enteredDate)
-        };
+            amount: +enteredAmount,
+            date: new Date(enteredDate),
+          };
 
-        props.onSaveExpenseData(expenseData);
+        props.onSaveExpenseData(expenseData); //passing expenseData as props to NewExpense
         setEnteredTitle("");//This will clear the data after entered by user to display empty form again
         setEnteredAmount("");
         setEnteredDate("");
     };
 
+    
     return (
     <form onSubmit ={submitHandler}>
         <div className="new-expense__controls">
@@ -93,6 +94,7 @@ const ExpenseForm = (props) => {
             </div>
         </div>
         <div className="new-expense__actions">
+            <button type="button" onClick={props.onCancel}>Cancel</button>
             <button type="submit">Add Expense</button>
         </div>
     </form>
